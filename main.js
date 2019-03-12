@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
+const express = require('express')
+const fs = require('fs')
 
 let win;
 
@@ -39,3 +41,13 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+const server = express()
+
+server.get('/:path', (req, res) => {
+  res.send(fs.readdirSync(path))
+})
+
+server.listen(3333, () => {
+  console.log('listening port 3333.')
+})
