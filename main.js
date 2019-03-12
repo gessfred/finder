@@ -44,9 +44,9 @@ app.on("activate", () => {
 
 const server = express()
 
-server.get('/:path', (req, res) => {
-  console.log(req)
-  res.send(fs.readdirSync(path))
+server.get('/ls/:path', (req, res) => {
+  console.log(`ls ${req.params.path}`)
+  res.send(fs.readdirSync(req.params.path))
 })
 
 server.listen(8000, () => {

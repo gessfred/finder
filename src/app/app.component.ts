@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
 
   ls(): void {
     this.file.ls().subscribe(f => {
-      console.log(f)
       this.files=f
     })
   }
