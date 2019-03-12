@@ -45,9 +45,10 @@ app.on("activate", () => {
 const server = express()
 
 server.get('/:path', (req, res) => {
+  console.log(req)
   res.send(fs.readdirSync(path))
 })
 
-server.listen(3333, () => {
-  console.log('listening port 3333.')
+server.listen(8000, () => {
+  console.log('listening port 8000.')
 })

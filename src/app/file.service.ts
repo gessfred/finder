@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ls(): Observable<string[]> {
-    return of(['server.js', 'secrets.jpeg'])
+    return this.http.get<string[]>('http://localhost:8000/api')
    }
 }
