@@ -11,6 +11,8 @@ import { FormControl } from '@angular/forms'
 export class AppComponent implements OnInit {
   navbar = new FormControl('')
   ngOnInit(): void {
+    this.navbar.setValue("/Users/fredericgessler/")
+    this.lsCurrent()
   }
   title = "finder"
 /*function() {
@@ -26,9 +28,13 @@ export class AppComponent implements OnInit {
     })
   }
 
+  lsCurrent() {
+    this.ls(this.navbar.value)
+  }
+
   onEnter(e: KeyboardEvent): void {
     if(e.keyCode == 13) {
-      this.ls(this.navbar.value)
+      this.lsCurrent()
     }
   }
 }
