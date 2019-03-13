@@ -10,6 +10,6 @@ export class FileService {
   constructor(private http: HttpClient) { }
 
   ls(): Observable<string[]> {
-    return this.http.get<string[]>('http://localhost:8000/ls/.%2F')
+    return this.http.get<string[]>('http://localhost:8000/ls/..%2F')
    }
 }
