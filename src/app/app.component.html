@@ -1,9 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <div style="display: inline-block; width: 100%">
+  <div class="nav">
     <input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">
   </div>
-  <div *ngFor='let f of files'> {{f}} </div>
+  <div *ngFor='let f of files'> <button class="file-line">{{f}}</button> </div>
 </div>
 
 
