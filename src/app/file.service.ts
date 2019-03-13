@@ -9,7 +9,8 @@ export class FileService {
 
   constructor(private http: HttpClient) { }
 
-  ls(): Observable<string[]> {
-    return this.http.get<string[]>('http://localhost:8000/ls/..%2F')
+  ls(path: string): Observable<string[]> {
+    let escaped_path: string = path.replace(/\//g, '%2F')
+    return this.http.get<string[]>(`http://localhost:8000/ls/${escaped_path}`)
    }
 }

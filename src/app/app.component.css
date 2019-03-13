@@ -1,0 +1,9 @@
+.navbar {
+    width: 80%;
+    margin-right: 32px;
+    font-weight: bolder;
+    border: none;
+    background: lightgray;
+    border-radius: 30px;
+    padding-left: 8px;
+}
