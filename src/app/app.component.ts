@@ -32,7 +32,12 @@ export class AppComponent implements OnInit {
       this.files=f
     })
   }
-
+  goPrev() {
+    this.path.length > 1 && (() => {
+      this.path.pop()
+      this.lsPath()
+    })()
+  }
   stringifyPath(path: Array<string>, separator: string): string {
     return path.map((x) => `${separator}${x}`).reduce((o, x) => o + x)
   }
