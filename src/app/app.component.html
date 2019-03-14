@@ -1,10 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app-root">
   <div class="nav">
-    <input type="button" class="prev-button" (click)="goPrev()" value="BACK">
+    <button class="prev-button" (click)="goPrev()">
+      <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
+    </button>
     <input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">
   </div>
   <div class="files-list">
+    <pre><code>{{this.preview}}</code></pre>
+      
       <div *ngFor='let f of files'> 
         <button class="file-line" (click)="goItem(f)">{{f}}</button> 
       </div>

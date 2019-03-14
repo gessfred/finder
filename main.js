@@ -49,6 +49,13 @@ server.get('/ls/:path', (req, res) => {
   res.send(fs.readdirSync(req.params.path))
 })
 
+server.get('/cat/:file', (req, res) => {
+  console.log(`cat ${req.params.file}`)
+  fs.readFile(req.params.file, (err, buf) => {
+    res.send(buf.toString())
+  })
+})
+
 server.listen(8000, () => {
   console.log('listening port 8000.')
 })

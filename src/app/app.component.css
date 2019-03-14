@@ -14,14 +14,13 @@
     font-weight: bold;
     margin-left: 72px;
     text-align: center;
+    border: none;
 }
 .navbar {
     font-weight: bolder;
     border-radius: 30px;
     margin-left: 16px;
     width: 80%;
-}
-.prev-button, .navbar {
     border: none;
     background: lightgray;
     padding: 6px;

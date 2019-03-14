@@ -13,4 +13,8 @@ export class FileService {
     let escaped_path: string = path.replace(/\//g, '%2F')
     return this.http.get<string[]>(`http://localhost:8000/ls/${escaped_path}`)
    }
+
+   cat(file: string): Observable<string> {
+     return this.http.get(`http://localhost:8000/cat/${file}`, {responseType: 'text'})
+   }
 }
