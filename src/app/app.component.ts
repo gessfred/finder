@@ -19,8 +19,12 @@ export class AppComponent implements OnInit {
 
   files = []
   constructor(private file: FileService) { }
-  goItem() {
-
+  goItem(node: string) {
+    //if not a file
+    if(!node.includes('.')){ //think of other separators?
+      this.path.push(node)
+      this.lsPath()
+    }
   }
   ls(path: string): void {
     console.log(`CLIENT:  ls ${path}`)
