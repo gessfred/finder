@@ -14,11 +14,14 @@
     font-weight: bold;
     margin-left: 72px;
     text-align: center;
+    height: 32px;
     border: none;
 }
 .navbar {
     font-weight: bolder;
     border-radius: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     margin-left: 16px;
     width: 80%;
     border: none;
@@ -30,12 +33,14 @@
 }
 .file-line {
     width: 95%;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     background: lightgray;
     border: solid 2px white;
     border-radius: 10px;
     text-align: left;
-    padding: 4px;
+    padding: 8px;
     padding-left: 16px;
     margin: auto;
 }
@@ -46,6 +51,29 @@
 
 .files-list {
     margin-top: 64px;
+}
+.file-line-btn {
+    background: white;
+    color: lightgray;
+    border-radius: 100%;
+    padding: 4px;
+    border: none;
+}
+
+.preview {
+    position: absolute;
+    background: whitesmoke;
+    left: 5%;
+    height: 240px;
+}
+
+.unselectable, .file-line, .preview {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 /*.app-root {
     display: block;

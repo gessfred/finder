@@ -52,7 +52,7 @@ server.get('/ls/:path', (req, res) => {
 server.get('/cat/:file', (req, res) => {
   console.log(`cat ${req.params.file}`)
   fs.readFile(req.params.file, (err, buf) => {
-    res.send(buf.toString())
+    buf && res.send(buf.toString())
   })
 })
 

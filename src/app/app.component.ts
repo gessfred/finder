@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { lstat } from 'fs'
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms'
 import { stringify } from '@angular/compiler/src/util'
-import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleLeft, faEye } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +12,7 @@ import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export class AppComponent implements OnInit {
   faChevronCircleLeft = faChevronCircleLeft
+  faEye=faEye
   navbar = new FormControl('')
   path: Array<string> = ['Users', 'fredericgessler']
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   }
   title = "finder"
   preview:string
+  file_preview: string
   files = []
   constructor(private file: FileService) { }
   goItem(node: string) {
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
     this.file.cat(`${this.getPath()}%2F${file}`).subscribe(buf => {
       console.log(`RECV:  ${buf}`)
       this.preview = buf
+      this.file_preview = file
     })
   }
   goPrev() {
@@ -48,6 +51,9 @@ export class AppComponent implements OnInit {
       this.path.pop()
       this.lsPath()
     })()
+  }
+  clearPreview() {
+    this.file_preview = null
   }
   stringifyPath(path: Array<string>, separator: string): string {
     return path.map((x) => `${separator}${x}`).reduce((o, x) => o + x)
