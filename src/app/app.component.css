@@ -7,7 +7,7 @@
     top: 0px;
     left: 0px;
     padding: 8px;
-    overflow: visible;
+    overflow: hidden;
 }
 .prev-button {
     border-radius: 5px;
@@ -30,18 +30,23 @@
     color: white;
 }
 .file-line {
-    width: 100%;
+    width: 95%;
     font-weight: bold;
     background: lightgray;
     border: solid 2px white;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     padding: 4px;
     padding-left: 16px;
+    margin: auto;
 }
 
 .file-line:hover {
     color: white;
+}
+
+.files-list {
+    margin-top: 64px;
 }
 /*.app-root {
     display: block;
