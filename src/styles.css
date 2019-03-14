@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    -ms-overflow-style: scrollbar;
+    -webkit-app-region:drag;
+}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="text"],
+button,
+textarea {
+	-webkit-app-region: no-drag;
+}
+button:focus {outline:0;}
