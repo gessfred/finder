@@ -1,19 +1,23 @@
 <div class="nav">
-        <button class="nav-item" (click)="previous()">
-            <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
-          </button>
-          <div style="display: inline-block">
-            <div *ngFor='let dir of path' style='display: inline-block'>
-              <button class="nav-item">
-                {{dir}}/
-              </button>
-            </div>
-            <div *ngIf='dirmk'>
-              <input type="text" >
-            </div>
-          </div>
-         
-          <button class="nav-item" (click)="mkdir()">
-            <fa-icon [icon]="faPlus"></fa-icon>
-          </button>
-  </div>
+    <button class="nav-item" (click)="previous()">
+      <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
+    </button>
+    <div style="display: inline-block">
+      <div *ngFor='let dir of path' style='display: inline-block'>
+        <button class="nav-item">
+          {{dir}}/
+        </button>
+      </div>
+    </div>
+    
+    <button class="nav-item" (click)="mkdir()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+
+    <button (click)="hide()" class="nav-item">
+        <fa-icon *ngIf="isDotHidden" [icon]="faEyeSlash"></fa-icon>
+        <fa-icon *ngIf="!isDotHidden" [icon]="faEye"></fa-icon>
+      </button>
+    <div class="options">
+    </div>
+</div>

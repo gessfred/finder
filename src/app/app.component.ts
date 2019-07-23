@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   title = "finder"
   preview:string
   file_preview: string
+  files_unfiltered = []
   files = []
+  visible: boolean
   constructor(private file: FileService) { }
   mkdir() {
     const folder = this.stringifyPath(this.navbar.value, '%2F')
@@ -43,7 +45,8 @@ export class AppComponent implements OnInit {
   ls(path: string): void {
     console.log(`CLIENT:  ls ${path}`)
     this.file.ls(path).subscribe(f => {
-      this.files=f
+      this.files_unfiltered=f
+      this.files = this.files_unfiltered.filter((file: string) => !file.includes('.'))
     })
   }
   cat(file: string): void {
@@ -80,6 +83,13 @@ export class AppComponent implements OnInit {
       this.path.shift()
       this.lsPath()
     }
+  }
+  showDots(visible: boolean) {
+    this.visible = visible
+  }
+  getFiles(): Array<string> {
+    return !this.visible ? this.files_unfiltered : 
+    this.files_unfiltered.filter((file: string) => !(file.charAt(0) == '.'))
   }
 }
 //<input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">

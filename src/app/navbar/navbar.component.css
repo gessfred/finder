@@ -25,10 +25,11 @@
     background: none;
     outline: none;
     font-size: 18px;
+    font-weight: bold;
     border: none;
     padding: 8px;
     color: whitesmoke;
-    font-family: Arial;
+    font-family: Futura;
 }
 
 .nav-item:hover {
@@ -36,4 +37,8 @@
 }
 
 .nav-bar {
+}
+.options {
+    float: right;
+    color: white;
 }

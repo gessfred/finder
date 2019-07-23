@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faChevronCircleLeft, faEye, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faEye, faPlus, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-navbar',
@@ -7,16 +7,18 @@ import { faChevronCircleLeft, faEye, faPlusCircle } from '@fortawesome/free-soli
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  faChevronCircleLeft = faChevronCircleLeft
+  faChevronCircleLeft = faChevronLeft
   faEye=faEye
-  faPlus = faPlusCircle
-
+  faPlus = faPlus
+  faEyeSlash = faEyeSlash
   @Input() path: Array<string>
   @Output() prev = new EventEmitter()
-
+  @Output() hid = new EventEmitter<boolean>()
+  isDotHidden=false
   constructor() { }
 
   ngOnInit() {
+    this.hid.emit(this.isDotHidden)
   }
 
   previous() {
@@ -25,6 +27,11 @@ export class NavbarComponent implements OnInit {
 
   mkdir() {
 
+  }
+
+  hide() {
+    this.isDotHidden = !this.isDotHidden
+    this.hid.emit(this.isDotHidden)
   }
 
 }
