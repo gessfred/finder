@@ -1,0 +1,19 @@
+<div class="nav">
+        <button class="nav-item" (click)="previous()">
+            <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
+          </button>
+          <div style="display: inline-block">
+            <div *ngFor='let dir of path' style='display: inline-block'>
+              <button class="nav-item">
+                {{dir}}/
+              </button>
+            </div>
+            <div *ngIf='dirmk'>
+              <input type="text" >
+            </div>
+          </div>
+         
+          <button class="nav-item" (click)="mkdir()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+          </button>
+  </div>

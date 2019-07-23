@@ -1,26 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app-root">
-  <div class="nav">
-    <button class="prev-button" (click)="goPrev()">
-      <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
-    </button>
-    <input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">
-  </div>
-  <div class="files-list">
-    
-      
-      <div *ngFor='let f of files'> 
-        <div *ngIf='file_preview == f' class="preview">
-            <pre><code>{{this.preview}}</code></pre>
-        </div>
-        <button class="file-line" (click)="goItem(f)">
-          <button  class="file-line-btn" (mouseover)="goItem(f)" (mouseleave)="clearPreview()">
-              <fa-icon [icon]="faEye"></fa-icon>
-            </button>
-          {{f}}
-        </button> 
+  <app-navbar [path]="path" (prev)="goPrev()"></app-navbar>
+  <div class="main">
+      <div class="menu">
+          <app-menu></app-menu>
       </div>
-  </div>
+      <div class="files-list">
+          <app-file-list [files]="files" (go)="goItem($event)"></app-file-list>
+      </div>
+    </div>
+ 
+  
   
 </div>
 

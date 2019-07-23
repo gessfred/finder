@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core'
 import { lstat } from 'fs'
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms'
 import { stringify } from '@angular/compiler/src/util'
-import { faChevronCircleLeft, faEye } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleLeft, faEye, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +12,7 @@ import { faChevronCircleLeft, faEye } from '@fortawesome/free-solid-svg-icons'
 })
 
 export class AppComponent implements OnInit {
-  faChevronCircleLeft = faChevronCircleLeft
-  faEye=faEye
+  dirmk: boolean = false
   navbar = new FormControl('')
   path: Array<string> = ['Users', 'fredericgessler']
   ngOnInit(): void {
@@ -23,7 +23,14 @@ export class AppComponent implements OnInit {
   file_preview: string
   files = []
   constructor(private file: FileService) { }
+  mkdir() {
+    const folder = this.stringifyPath(this.navbar.value, '%2F')
+    this.file.mkdir(folder).subscribe(res => {
+      this.lsPath()
+    })
+  }
   goItem(node: string) {
+    console.log(node)
     //if not a file
     if(!node.includes('.')){ //think of other separators?
       this.path.push(node)
@@ -75,3 +82,9 @@ export class AppComponent implements OnInit {
     }
   }
 }
+//<input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">
+/*
+<div *ngIf='file_preview == f' class="preview">
+            <pre><code>{{this.preview}}</code></pre>
+        </div>
+*/ 

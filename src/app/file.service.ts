@@ -9,12 +9,23 @@ export class FileService {
 
   constructor(private http: HttpClient) { }
 
+  escape(path: string): string {
+    return path.replace(/\//g, '%2F')
+  }
+
   ls(path: string): Observable<string[]> {
-    let escaped_path: string = path.replace(/\//g, '%2F')
-    return this.http.get<string[]>(`http://localhost:8000/ls/${escaped_path}`)
+    return this.http.get<string[]>(`http://localhost:8000/ls/${this.escape(path)}`)
    }
 
    cat(file: string): Observable<string> {
      return this.http.get(`http://localhost:8000/cat/${file}`, {responseType: 'text'})
+   }
+
+   mkdir(path: string): Observable<any> {
+     return this.http.get(`http://localhost:8000/mkdir/${this.escape(path)}`)
+   }
+
+   stat(file: string): Observable<any> {
+     return this.http.get(`http://localhost:8000/stat/${this.escape(file)}`)
    }
 }

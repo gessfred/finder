@@ -1,0 +1,20 @@
+.menu {
+    width: 160px;
+    text-align: left;
+    display: block;
+}
+.item {
+    width: 100%;
+    padding: 8px;
+    font-weight: bold;
+    font-family: Futura;
+    font-size: 12px;
+    background: none;
+    border: none;
+    color: whitesmoke;
+    outline: none;
+}
+.item:hover {
+    background: darkgray;
+    color: white;
+}

@@ -1,8 +1,7 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
 const url = require("url")
-const express = require('express')
-const fs = require('fs')
+const server = require('./filesystem')
 
 let win;
 
@@ -40,20 +39,6 @@ app.on("activate", () => {
   if (win === null) {
     createWindow();
   }
-})
-
-const server = express()
-
-server.get('/ls/:path', (req, res) => {
-  console.log(`ls ${req.params.path}`)
-  res.send(fs.readdirSync(req.params.path))
-})
-
-server.get('/cat/:file', (req, res) => {
-  console.log(`cat ${req.params.file}`)
-  fs.readFile(req.params.file, (err, buf) => {
-    buf && res.send(buf.toString())
-  })
 })
 
 server.listen(8000, () => {

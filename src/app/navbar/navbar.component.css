@@ -1,0 +1,39 @@
+/*.navbar {
+    width: 80%;
+    margin-right: 32px;
+    font-weight: bold;
+    border: none;
+    background: lightgray;
+    border-radius: 30px;
+    padding-left: 8px;
+}*/
+
+.nav {
+    display: inline-block; 
+    width: 100%; 
+    background: black;
+    height: 48px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 12px;
+    overflow: hidden;
+    margin-left: 128px;
+}
+
+.nav-item {
+    background: none;
+    outline: none;
+    font-size: 18px;
+    border: none;
+    padding: 8px;
+    color: whitesmoke;
+    font-family: Arial;
+}
+
+.nav-item:hover {
+    background: gray;
+}
+
+.nav-bar {
+}
