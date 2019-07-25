@@ -1,3 +1,5 @@
+import { Path } from './../Path';
+import { Directory } from './../Directory';
 import { FileService } from './file.service'
 import { Component, OnInit } from '@angular/core'
 import { lstat } from 'fs'
@@ -14,89 +16,42 @@ import { faChevronCircleLeft, faEye, faPlusCircle, faTintSlash } from '@fortawes
 export class AppComponent implements OnInit {
   dirmk: boolean = false
   navbar = new FormControl('')
-  path: Array<string> = ['Users', 'fredericgessler']
+  path: Path = new Path(['Users', 'fredericgessler'])
   ngOnInit(): void {
-    this.lsPath()
+    this.ls()
   }
   title = "finder"
-  preview:string
-  file_preview: string
   files_unfiltered = []
   files = []
   visible: boolean
+  directory: Directory = new Directory('', [])
   favourites: Array<Array<string>> = []
-  constructor(private file: FileService) { }
-  mkdir() {
-    const folder = this.stringifyPath(this.navbar.value, '%2F')
-    this.file.mkdir(folder).subscribe(res => {
-      this.lsPath()
-    })
-  }
+  constructor(private fs: FileService) { }
   goItem(node: string) {
     console.log(node)
     //if not a file
     if(!node.includes('.')){ //think of other separators?
-      this.path.push(node)
-      this.lsPath()
-    }
-    else {
-      this.cat(node)
+      this.path.cd(node)
+      this.ls()
     }
   }
-  ls(path: string): void {
-    console.log(`CLIENT:  ls ${path}`)
-    this.file.ls(path).subscribe(f => {
-      this.files_unfiltered=f
-      this.files = this.files_unfiltered.filter((file: string) => !file.includes('.'))
-    })
-  }
-  cat(file: string): void {
-    this.file.cat(`${this.getPath()}%2F${file}`).subscribe(buf => {
-      console.log(`RECV:  ${buf}`)
-      this.preview = buf
-      this.file_preview = file
-    })
+  ls(): void {
+    console.log(`ls ${this.getPath()}`)
+    this.fs.ls(this.getPath()).subscribe(f => this.directory.from(f))
   }
   goPrev() {
-    this.path.length > 1 && (() => {
-      this.path.pop()
-      this.lsPath()
-    })()
-  }
-  clearPreview() {
-    this.file_preview = null
-  }
-  stringifyPath(path: Array<string>, separator: string): string {
-    return path.map((x) => `${separator}${x}`).reduce((o, x) => o + x)
+    this.path.back()
+    this.ls()
   }
 
-  lsPath() {
-    console.log(this.path)
-    this.ls(this.getPath())
-    this.navbar.setValue(this.stringifyPath(this.path, '/'))
-  }
   getPath(): string {
-    return this.stringifyPath(this.path, '%2F')
+    return this.path.stringify('%2F')
   }
-  onEnter(e: KeyboardEvent): void {
-    if(e.keyCode == 13) {
-      this.path = this.navbar.value.split('/')
-      this.path.shift()
-      this.lsPath()
-    }
-  }
-  showDots(visible: boolean) {
-    this.visible = visible
-  }
-  getFiles(): Array<string> {
-    return !this.visible ? this.files_unfiltered : 
-    this.files_unfiltered.filter((file: string) => !(file.charAt(0) == '.'))
+  toggleDots(visible: boolean) {
+    this.directory.toggleDots()
   }
   getStars(): Array<Array<string>> {
     return this.favourites
-  }
-  addPath() {
-    this.favourites.push(this.path)
   }
 }
 

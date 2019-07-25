@@ -19,7 +19,18 @@ server.get('/mkdir/:path', (req, res) => {
 
 server.get('/ls/:path', (req, res) => {
   console.log(`ls ${req.params.path}`)
-  res.send(fs.readdirSync(req.params.path))
+  let content = fs.readdirSync(req.params.path).map(file => {
+    const stats = fs.statSync(`${req.params.path}/${file}`)
+    return {
+        name: file,
+        size: stats.size,
+        ctime: stats.ctimeMs,
+        btime: stats.birthtimeMs,
+        atime: stats.atimeMs,
+        mtime: stats.mtimeMs
+    }
+})
+  res.send(JSON.stringify(content))
 })
 
 server.get('/cat/:file', (req, res) => {
@@ -29,8 +40,15 @@ server.get('/cat/:file', (req, res) => {
   })
 })
 server.get('/stat/:file', async (req, res) => {
-  console.log(`stat ${req.params.file}`)
-  fs.stat()
+  try {
+    console.log(`stat ${req.params.file}`)
+    const stat = await fs.stat(req.params.file)
+    console.log(stat)
+    res.send(JSON.stringify(stat))
+  }
+  catch(e) {
+    console.log(e)
+  }
 })
 
 module.exports = server

@@ -13,8 +13,8 @@ export class FileService {
     return path.replace(/\//g, '%2F')
   }
 
-  ls(path: string): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8000/ls/${this.escape(path)}`)
+  ls(path: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:8000/ls/${this.escape(path)}`)
    }
 
    cat(file: string): Observable<string> {
@@ -25,7 +25,7 @@ export class FileService {
      return this.http.get(`http://localhost:8000/mkdir/${this.escape(path)}`)
    }
 
-   stat(file: string): Observable<any> {
-     return this.http.get(`http://localhost:8000/stat/${this.escape(file)}`)
+   stat(file: string): Observable<string> {
+     return this.http.get(`http://localhost:8000/stat/${this.escape(file)}`, {responseType: 'text'})
    }
 }

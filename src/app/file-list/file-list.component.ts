@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Directory } from 'src/Directory';
 
 @Component({
   selector: 'app-file-list',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FileListComponent implements OnInit {
 
-  @Input() files: Array<string>
+  @Input() dir: Directory
   @Output() go = new EventEmitter<string>()
 
   constructor() { }

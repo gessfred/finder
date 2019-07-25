@@ -1,9 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app-root">
-  <app-navbar [path]="path" (prev)="goPrev()" (hid)="showDots($event)" (save)="addPath()"></app-navbar>
+  <app-navbar [path]="path" (prev)="goPrev()" (hid)="toggleDots()" (save)="addPath()"></app-navbar>
   <div class="main">
     <app-menu [stars]="getStars()"></app-menu>
-    <app-file-list [files]="getFiles()" (go)="goItem($event)"></app-file-list>
+    <app-file-list [dir]="directory" (go)="goItem($event)"></app-file-list>
   </div>
 </div>
 

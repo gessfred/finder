@@ -20,7 +20,7 @@
 
 .file-list {
     height: 500px;
-    width: 100%;
+    width: 300px;
     background: rgb(75, 75, 75);
     display: block;
     overflow: scroll;

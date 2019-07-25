@@ -3,7 +3,7 @@
       <fa-icon [icon]="faChevronCircleLeft"></fa-icon>
     </button>
     <div style="display: inline-block">
-      <div *ngFor='let dir of path' style='display: inline-block'>
+      <div *ngFor='let dir of path.walk()' style='display: inline-block'>
         <button class="nav-item">
           {{dir}}/
         </button>

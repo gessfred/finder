@@ -1,3 +1,4 @@
+import { Path } from './../../Path';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faChevronLeft, faEye, faPlus, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
   faPlus = faPlus
   faEyeSlash = faEyeSlash
   faStar = faStar
-  @Input() path: Array<string>
+  @Input() path: Path
   @Output() prev = new EventEmitter()
   @Output() hid = new EventEmitter<boolean>()
   @Output() save = new EventEmitter()
@@ -24,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
   previous() {
-    this.prev.next()
+    this.prev.emit()
   }
 
   mkdir() {
