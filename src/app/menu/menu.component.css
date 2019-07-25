@@ -1,5 +1,8 @@
 .menu {
-    width: 160px;
+    overflow: hidden;
+}
+.sub-menu {
+    width: 128px;
     text-align: left;
     display: block;
 }

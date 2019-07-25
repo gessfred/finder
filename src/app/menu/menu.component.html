@@ -1,3 +1,8 @@
-<div *ngFor="let dir of menu" class="menu">
-  <button class="item">{{dir}}</button>
+<div class="menu">
+  <div class="sub-menu">
+    <button *ngFor="let dir of menu" class="item">{{dir}}</button>
+  </div>
+  <div class="sub-menu">
+    <button *ngFor="let star of stars" class="item">{{nameOfPath(star)}}</button>
+  </div>
 </div>

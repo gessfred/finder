@@ -1,5 +1,4 @@
 .file {
-    width: 95%;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -11,9 +10,19 @@
     padding-left: 16px;
     margin: auto;
     color: whitesmoke;
-
+    display: block;
+    width: 100%;
 }
 
 .file:hover {
     background: darkgray;
+}
+
+.file-list {
+    height: 500px;
+    width: 100%;
+    background: rgb(75, 75, 75);
+    display: block;
+    overflow: scroll;
+    margin-right: 0px;
 }

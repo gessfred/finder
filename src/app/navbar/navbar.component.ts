@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faChevronLeft, faEye, faPlus, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faEye, faPlus, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +11,11 @@ export class NavbarComponent implements OnInit {
   faEye=faEye
   faPlus = faPlus
   faEyeSlash = faEyeSlash
+  faStar = faStar
   @Input() path: Array<string>
   @Output() prev = new EventEmitter()
   @Output() hid = new EventEmitter<boolean>()
+  @Output() save = new EventEmitter()
   isDotHidden=false
   constructor() { }
 
@@ -34,4 +36,7 @@ export class NavbarComponent implements OnInit {
     this.hid.emit(this.isDotHidden)
   }
 
+  savePath() {
+    this.save.emit()
+  }
 }

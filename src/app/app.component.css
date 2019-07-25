@@ -5,61 +5,16 @@
     color: white;
     margin: none;
     padding: none;
-}
-/*
-
-
-
-*/
-.nav {
-    display: inline-block; 
-    width: 100%; 
-    background: rgba(255, 255, 255, 0.66); 
-    height: 48px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding: 8px;
     overflow: hidden;
 }
-.prev-button {
-    border-radius: 5px;
-    font-weight: bold;
-    margin-left: 72px;
-    text-align: center;
-    height: 32px;
-    border: none;
-}
-.navbar {
-    font-weight: bolder;
-    border-radius: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    margin-left: 16px;
-    width: 80%;
-    border: none;
-    background: lightgray;
-    padding: 6px;
-}
-.prev-button:hover {
-    color: white;
-}
 
-.files-list, .menu {
-    margin-top: 64px;
-}
-.files-list {
-    width: 100%;
-}
-.preview {
-    position: absolute;
-    background: whitesmoke;
-    left: 5%;
-    height: 240px;
-}
 
 .main {
+    width: 100%;
+    margin-top: 64px;
     display: flex;
+    overflow: hidden;
+    height: 100%;
 }
 
 .unselectable, .file-line, .preview {
@@ -70,13 +25,3 @@
     -ms-user-select: none;
     user-select: none;
 }
-/*.app-root {
-    display: block;
-    margin: none;
-    padding: none;
-    position: fixed;
-    overflow: hidden;
-    left: 0;
-    top: 0;
-    width: 100%;
-}*/

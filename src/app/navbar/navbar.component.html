@@ -15,9 +15,12 @@
     </button>
 
     <button (click)="hide()" class="nav-item">
-        <fa-icon *ngIf="isDotHidden" [icon]="faEyeSlash"></fa-icon>
-        <fa-icon *ngIf="!isDotHidden" [icon]="faEye"></fa-icon>
-      </button>
+      <fa-icon *ngIf="isDotHidden" [icon]="faEyeSlash"></fa-icon>
+      <fa-icon *ngIf="!isDotHidden" [icon]="faEye"></fa-icon>
+    </button>
+    <button (click)="savePath()" class="nav-item">
+      <fa-icon [icon]="faStar"></fa-icon>
+    </button>
     <div class="options">
     </div>
 </div>

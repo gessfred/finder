@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { lstat } from 'fs'
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms'
 import { stringify } from '@angular/compiler/src/util'
-import { faChevronCircleLeft, faEye, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faChevronCircleLeft, faEye, faPlusCircle, faTintSlash } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-root',
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   files_unfiltered = []
   files = []
   visible: boolean
+  favourites: Array<Array<string>> = []
   constructor(private file: FileService) { }
   mkdir() {
     const folder = this.stringifyPath(this.navbar.value, '%2F')
@@ -91,7 +92,23 @@ export class AppComponent implements OnInit {
     return !this.visible ? this.files_unfiltered : 
     this.files_unfiltered.filter((file: string) => !(file.charAt(0) == '.'))
   }
+  getStars(): Array<Array<string>> {
+    return this.favourites
+  }
+  addPath() {
+    this.favourites.push(this.path)
+  }
 }
+
+
+
+
+
+
+
+
+
+
 //<input type="text" class="navbar" [formControl]="navbar" (keydown)="onEnter($event)">
 /*
 <div *ngIf='file_preview == f' class="preview">

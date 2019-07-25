@@ -1,6 +1,5 @@
-<div *ngFor='let f of files'> 
-            
-    <button class="file" (click)="goItem(f)">
+<div class="file-list">
+  <button *ngFor='let f of files' class="file" (click)="goItem(f)"> 
       {{f}}
-    </button> 
-  </div>
+  </button>
+</div>
