@@ -16,7 +16,7 @@ import { faChevronCircleLeft, faEye, faPlusCircle, faTintSlash } from '@fortawes
 export class AppComponent implements OnInit {
   dirmk: boolean = false
   navbar = new FormControl('')
-  path: Path = new Path(['Users', 'fredericgessler'])
+  path: Path = new Path(['Users', 'fredericgessler', 'Documents', 'ba6', 'db', 'hands-on'])
   ngOnInit(): void {
     this.ls()
     this.ls_rec()

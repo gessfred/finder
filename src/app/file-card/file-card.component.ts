@@ -1,6 +1,6 @@
 import { File } from './../../File';
 import { Component, OnInit, Input } from '@angular/core';
-import { faFolder } from '@fortawesome/free-solid-svg-icons'
+import { faFolder, faDatabase, faCode } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-file-card',
@@ -8,7 +8,9 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./file-card.component.css']
 })
 export class FileCardComponent implements OnInit {
-
+  faFolder=faFolder
+  faDatabase=faDatabase
+  faCode=faCode
   @Input() file: File
 
   constructor() { }

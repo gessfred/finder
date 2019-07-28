@@ -1,0 +1,21 @@
+.text {
+
+}
+
+.keyword {
+    color: aquamarine;
+    font-weight: bold;
+}
+
+.number {
+    color: purple;
+}
+
+.comment {
+    color: gray;
+}
+
+.text, .number, .keyword, .comment {
+    margin-right: 10px;
+    font-size: 12px;
+}

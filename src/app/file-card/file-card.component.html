@@ -1,10 +1,15 @@
 <div class="card">
-    <h1>{{file.name}}</h1>
+  <div class="title">
+      <fa-icon [icon]="faFolder" *ngIf="file.isDirectory()" class="icon"></fa-icon>
+      <fa-icon [icon]="faDatabase" *ngIf="file.type == 'sql'" class="icon"></fa-icon>
+      <fa-icon [icon]="faCode" *ngIf="file.type == 'json'" class="icon"></fa-icon>
+      <span class="titlename">{{file.name}}</span>
+  </div>
     <div *ngIf="file.isDirectory()">
       <app-dir-view [content]="file.children"></app-dir-view>
     </div>
     <div *ngIf="file.type == 'sql'">
-      {{file.children}}
+      <app-code-view [code]="file.children" [type]="sql"></app-code-view>
     </div>
     <div class="info-slip">
         {{file.size}} {{file.ctime}}

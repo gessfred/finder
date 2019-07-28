@@ -14,3 +14,18 @@
     background: rgb(75, 75, 75);
     overflow: hidden;
 }
+
+.title {
+    padding: 2px;
+    display: inline;
+}
+
+.titlename {
+    font-size: 25px;
+    margin-left: 4px;
+}
+
+.icon {
+    color: dodgerblue;
+    font-size: 25px;
+}
