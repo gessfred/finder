@@ -12,6 +12,34 @@ const amw = (f) => async (req, res) => {
     }
 } 
 
+let traverse = (path) => {
+  let dir = fs.readdirSync(path)
+  return dir.map(file=> {
+      const fp = `${path}/${file}`
+      const stats = fs.statSync(fp)
+      const file_ext = file.split('.') 
+      const type = file_ext.length > 1 ? file_ext[file_ext.length-1] : null
+      let children = null
+      try {
+        if(file.charAt(0) != '.')
+          children = type ? fs.readFileSync(fp).toString() : fs.readdirSync(fp)
+      }
+      catch(e) {
+
+      }
+      return {
+          name: file,
+          size: stats.size,
+          ctime: stats.ctimeMs,
+          btime: stats.birthtimeMs,
+          atime: stats.atimeMs,
+          mtime: stats.mtimeMs,
+          type: type,
+          children: children
+      }
+  })
+}
+
 server.get('/mkdir/:path', (req, res) => {
   console.log(`mkdir ${req.params.path}`)
   fs.mkdirSync(req.params.path)
@@ -50,5 +78,9 @@ server.get('/stat/:file', async (req, res) => {
     console.log(e)
   }
 })
+
+server.get('/ls-rec/:file', amw((a, b) => {
+  b.send(JSON.stringify(traverse(a.params.file)))
+}))
 
 module.exports = server

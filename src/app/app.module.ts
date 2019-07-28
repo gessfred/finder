@@ -8,14 +8,22 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
-import { FileListComponent } from './file-list/file-list.component'
+import { FileListComponent } from './file-list/file-list.component';
+import { FeedComponent } from './feed/feed.component';
+import { FileCardComponent } from './file-card/file-card.component';
+import { CodeViewComponent } from './code-view/code-view.component';
+import { DirViewComponent } from './dir-view/dir-view.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MenuComponent,
-    FileListComponent
+    FileListComponent,
+    FeedComponent,
+    FileCardComponent,
+    CodeViewComponent,
+    DirViewComponent
   ],
   imports: [
     BrowserModule,

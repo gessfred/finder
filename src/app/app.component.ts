@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   path: Path = new Path(['Users', 'fredericgessler'])
   ngOnInit(): void {
     this.ls()
+    this.ls_rec()
   }
   title = "finder"
   files_unfiltered = []
@@ -37,7 +38,11 @@ export class AppComponent implements OnInit {
   }
   ls(): void {
     console.log(`ls ${this.getPath()}`)
-    this.fs.ls(this.getPath()).subscribe(f => this.directory.from(f))
+    //this.fs.ls(this.getPath()).subscribe(f => this.directory.from(f))
+    this.ls_rec()
+  }
+  ls_rec(): void {
+    this.fs.ls_rec(this.getPath()).subscribe(f => this.directory.from(f))
   }
   goPrev() {
     this.path.back()

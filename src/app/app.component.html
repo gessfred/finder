@@ -3,7 +3,8 @@
   <app-navbar [path]="path" (prev)="goPrev()" (hid)="toggleDots()" (save)="addPath()"></app-navbar>
   <div class="main">
     <app-menu [stars]="getStars()"></app-menu>
-    <app-file-list [dir]="directory" (go)="goItem($event)"></app-file-list>
+    <!--<app-file-list [dir]="directory" (go)="goItem($event)"></app-file-list>-->
+    <app-feed [dir]="directory"></app-feed>
   </div>
 </div>
 

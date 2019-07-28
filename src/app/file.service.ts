@@ -28,4 +28,8 @@ export class FileService {
    stat(file: string): Observable<string> {
      return this.http.get(`http://localhost:8000/stat/${this.escape(file)}`, {responseType: 'text'})
    }
+
+   ls_rec(path: string): Observable<any> {
+     return this.http.get(`http://localhost:8000/ls-rec/${path}`)
+   }
 }

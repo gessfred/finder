@@ -1,0 +1,20 @@
+.dir {
+    display: flex;
+    overflow: scroll;
+}
+
+.folder {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+}
+
+.folder:hover {
+    background: darkgray;
+}
+
+.icon {
+    font-size: 25px;
+    color: dodgerblue;
+}

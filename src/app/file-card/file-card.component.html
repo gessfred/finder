@@ -1,0 +1,12 @@
+<div class="card">
+    <h1>{{file.name}}</h1>
+    <div *ngIf="file.isDirectory()">
+      <app-dir-view [content]="file.children"></app-dir-view>
+    </div>
+    <div *ngIf="file.type == 'sql'">
+      {{file.children}}
+    </div>
+    <div class="info-slip">
+        {{file.size}} {{file.ctime}}
+    </div>
+</div>
