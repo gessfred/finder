@@ -18,12 +18,17 @@ export class File {
         this.children = children
     }
 
-    isDot() {
+    isDot(): boolean {
         return this.name.charAt(0) == '.'
     }
 
-    isDirectory() {
+    isDirectory(): boolean {
         return this.type == null
+    }
+
+    isImage(): boolean {
+        const img = new Set(['png', 'jpg', 'jpeg'])
+        return img.has(this.type)
     }
 
     static from(json: any): File[] {

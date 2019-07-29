@@ -7,6 +7,7 @@ import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms'
 import { stringify } from '@angular/compiler/src/util'
 import { faChevronCircleLeft, faEye, faPlusCircle, faTintSlash } from '@fortawesome/free-solid-svg-icons'
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,10 +17,11 @@ import { faChevronCircleLeft, faEye, faPlusCircle, faTintSlash } from '@fortawes
 export class AppComponent implements OnInit {
   dirmk: boolean = false
   navbar = new FormControl('')
-  path: Path = new Path(['Users', 'fredericgessler', 'Documents', 'ba6', 'db', 'hands-on'])
+  path: Path = new Path(['Users', 'fredericgessler', 'Pictures', 'they-live'])
   ngOnInit(): void {
     this.ls()
-    this.ls_rec()
+    let im = new Path(['Users', 'fredericgessler', 'Pictures', 'vlcsnap-2019-07-29-00h41m01s487.png'])
+
   }
   title = "finder"
   files_unfiltered = []
@@ -48,7 +50,9 @@ export class AppComponent implements OnInit {
     this.path.back()
     this.ls()
   }
-
+  getimg(): string {
+    return `data:image/png;base64,`
+  }
   getPath(): string {
     return this.path.stringify('%2F')
   }

@@ -12,7 +12,8 @@ import { FileListComponent } from './file-list/file-list.component';
 import { FeedComponent } from './feed/feed.component';
 import { FileCardComponent } from './file-card/file-card.component';
 import { CodeViewComponent } from './code-view/code-view.component';
-import { DirViewComponent } from './dir-view/dir-view.component'
+import { DirViewComponent } from './dir-view/dir-view.component';
+import { ImgViewComponent } from './img-view/img-view.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DirViewComponent } from './dir-view/dir-view.component'
     FeedComponent,
     FileCardComponent,
     CodeViewComponent,
-    DirViewComponent
+    DirViewComponent,
+    ImgViewComponent
   ],
   imports: [
     BrowserModule,

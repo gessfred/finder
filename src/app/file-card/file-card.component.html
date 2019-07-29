@@ -11,6 +11,9 @@
     <div *ngIf="file.type == 'sql'">
       <app-code-view [code]="file.children" [type]="sql"></app-code-view>
     </div>
+    <div *ngIf="file.isImage()">
+      <app-img-view [image]="file.children" [type]="file.type"></app-img-view>
+    </div>
     <div class="info-slip">
         {{file.size}} {{file.ctime}}
     </div>

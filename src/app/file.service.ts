@@ -32,4 +32,8 @@ export class FileService {
    ls_rec(path: string): Observable<any> {
      return this.http.get(`http://localhost:8000/ls-rec/${path}`)
    }
+
+   streamImg(path: string): Observable<string> {
+     return this.http.get(`http://localhost:8000/img/${path}`, {responseType: 'text'})
+   }
 }

@@ -3,12 +3,15 @@ const fs = require('fs')
 
 const server = express()
 
+const imgTpe = new Set(['png', 'jpeg', 'jpg', 'bmp'])
+
 const amw = (f) => async (req, res) => {
     try {
         f(req, res)
     }
     catch (e) {
-        console.log(e)
+      console.log('Error')
+        //console.log(e)
     }
 } 
 
@@ -21,8 +24,13 @@ let traverse = (path) => {
       const type = file_ext.length > 1 ? file_ext[file_ext.length-1] : null
       let children = null
       try {
-        if(file.charAt(0) != '.')
-          children = type ? fs.readFileSync(fp).toString() : fs.readdirSync(fp)
+        if(file.charAt(0) != '.') {
+          if(imgTpe.has(type)) {
+            children = fs.readFileSync(fp).toString('base64')
+          }
+          else
+            children = type ? fs.readFileSync(fp).toString() : fs.readdirSync(fp)
+        }
       }
       catch(e) {
 
@@ -80,7 +88,16 @@ server.get('/stat/:file', async (req, res) => {
 })
 
 server.get('/ls-rec/:file', amw((a, b) => {
+  console.log(a.params.file)
   b.send(JSON.stringify(traverse(a.params.file)))
+}))
+
+server.get('/img/:path', amw((a, b) => {
+  //b.set('Content-Type', 'image/png')
+  console.log('STREAM IMG')
+  let img = fs.readFileSync(a.params.path).toString('base64')
+  b.send(img)
+  console.log(img)
 }))
 
 module.exports = server
