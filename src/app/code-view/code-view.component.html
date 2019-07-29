@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <div *ngFor="let line of codeIterator()">
     <span *ngFor="let token of line" [class]="styleOf(token, line)">{{token}}</span>
   </div>
